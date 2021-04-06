@@ -142,11 +142,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>First we need to import the package:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HistDat)</span></code></pre></div>
-<p>Now, let’s say that we have seen the number one 10,000 times, the number two 20,000 times etc.</p>
-<p>If we turned this into a single vector with the true number of each observation, we would have a vector of length 60,000! That would use a lot of RAM, and we don’t really need to do that</p>
+<p>Now, let’s say that we have seen the number one 1000 billion times, the number two twice that, the number three the same as two, and the number four the same number of times as one.</p>
+<p>If we turned this into a single vector with the true number of each observation, we would have a vector of length 6,000,000,000,000! It seems unlikely that this would even fit into RAM, and if it did, calculations would be very difficult.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">=</span> <span class="fu">HistDat</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">vals =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts =</span> <span class="fu">c</span>(<span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">20000</span>, <span class="dv">10000</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">counts =</span> <span class="fu">c</span>(<span class="fl">1e12</span>, <span class="fl">2e12</span>, <span class="fl">2e12</span>, <span class="fl">1e12</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>Now let’s calculate some summary statistics, without using RAM we don’t need!</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(h)</span>
@@ -154,7 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(h)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(h)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 60000</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6e+12</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(h)</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.5</span></span></code></pre></div>
 <p>We actually <em>can</em> convert a <code>hist_dat</code> object into a 1-D vector, which is reasonable if we only have a small number of counts:</p>

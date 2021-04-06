@@ -19,6 +19,11 @@ A numeric of length 1, holding the sum of all values in the dataset
 \description{
 Calculates the sum of all observations in the histogram dataset
 }
+\section{Functions}{
+\itemize{
+\item \code{sum,HistDat-method}: The S4 version
+}}
+
 \examples{
 hd <- HistDat(vals = 1:3, counts = c(1, 2, 1))
 sum(hd) # returns 8

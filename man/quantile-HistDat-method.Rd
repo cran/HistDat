@@ -2,23 +2,21 @@
 % Please edit documentation in R/histogram.R
 \name{quantile,HistDat-method}
 \alias{quantile,HistDat-method}
-\title{Calculates one or more empirical quantiles of the dataset}
+\title{Returns the empirical quantiles of the observations represented by this
+class}
 \usage{
 \S4method{quantile}{HistDat}(x, ...)
 }
 \arguments{
 \item{x}{An instance of the class HistDat}
 
-\item{...}{Additional arguments to pass to \code{quantile()}}
-}
-\value{
-A numeric with the same length as the probs parameter, holding the
-quantile corresponding to each provided probability
+\item{...}{Remaining arguments to pass to \code{\link[stats:quantile]{stats::quantile()}}}
 }
 \description{
-Calculates one or more empirical quantiles of the dataset
+Returns the empirical quantiles of the observations represented by this
+class
 }
 \examples{
 hd <- HistDat(vals = 1:3, counts = c(1, 2, 1))
-quantile(hd, 0.2) # returns 1.6
+quantile(hd, 0.1) # returns 1.3
 }
